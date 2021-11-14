@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="ap" prefHeight="803.0" prefWidth="800.0" style="-fx-background-color: black; -fx-background-radius: 30; -fx-border-radius: 30;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reflex.reflex.Stage1.Stage1">
+   <Button fx:id="b1" layoutX="55.0" layoutY="38.0" mnemonicParsing="false" onAction="#reopen" prefHeight="49.0" prefWidth="54.0" style="-fx-background-radius: 30; -fx-text-fill: #d70db2; -fx-background-color: black;" text="Back" textFill="#d70db2">
+      <font>
+         <Font size="15.0" />
+      </font>
+      <effect>
+         <InnerShadow choke="0.21" height="72.15" radius="35.39" width="71.41">
+            <color>
+               <Color red="0.7236841917037964" green="0.026803119108080864" blue="0.6075373888015747" />
+            </color>
+            <input>
+               <DropShadow height="40.275" radius="19.26625" spread="0.06" width="38.79">
+                  <color>
+                     <Color red="0.843137264251709" green="0.05098039284348488" blue="0.6980392336845398" />
+                  </color>
+               </DropShadow>
+            </input>
+         </InnerShadow>
+      </effect></Button>
+   <Text fx:id="scoreText" fill="#d70db2" fontSmoothingType="LCD" layoutX="219.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score" wrappingWidth="89.98307228088379">
+      <font>
+         <Font size="36.0" />
+      </font>
+      <effect>
+         <DropShadow spread="0.18">
+            <color>
+               <Color red="0.8157894611358643" green="0.15484893321990967" blue="0.6946170330047607" />
+            </color>
+         </DropShadow>
+      </effect>
+   </Text>
+   <Text fx:id="reflexText" fill="#d70db2" fontSmoothingType="LCD" layoutX="498.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reflex " textAlignment="CENTER" wrappingWidth="105.98307228088379">
+      <font>
+         <Font size="30.0" />
+      </font>
+      <effect>
+         <DropShadow spread="0.18">
+            <color>
+               <Color red="0.8421052694320679" green="0.046783626079559326" blue="0.6962962746620178" />
+            </color>
+         </DropShadow>
+      </effect>
+   </Text>
+   <Text fx:id="scoreTextField" fill="#0bd4ab" fontSmoothingType="LCD" layoutX="321.0" layoutY="58.0" opacity="0.66" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="78.98307228088379">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Text>
+   <Text fx:id="reflexTimeField" fill="#0bd4ab" fontSmoothingType="LCD" layoutX="627.0" layoutY="58.0" opacity="0.66" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="78.98307228088379">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Text>
+   <Pane fx:id="messagePane" layoutX="271.0" layoutY="264.0" opacity="0.26" prefHeight="65.0" prefWidth="267.0">
+      <children>
+         <Text fx:id="messageText" layoutX="26.0" layoutY="42.0" opacity="0.52" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="215.9830722808838">
+            <font>
+               <Font size="24.0" />
+            </font>
+            <fill>
+               <LinearGradient endX="1.0" endY="1.0" startY="1.0">
+                  <stops>
+                     <Stop>
+                        <color>
+                           <Color />
+                        </color>
+                     </Stop>
+                     <Stop offset="0.5120274914089348">
+                        <color>
+                           <Color red="0.7105262875556946" green="0.03618421033024788" blue="0.5981359481811523" />
+                        </color>
+                     </Stop>
+                     <Stop offset="1.0">
+                        <color>
+                           <Color />
+                        </color>
+                     </Stop>
+                  </stops>
+               </LinearGradient>
+            </fill>
+         </Text>
+      </children>
+   </Pane>
+   <effect>
+      <InnerShadow height="89.94" radius="54.6625" width="130.71">
+         <color>
+            <Color red="0.843137264251709" green="0.05098039284348488" blue="0.6980392336845398" />
+         </color>
+      </InnerShadow>
+   </effect>
+</AnchorPane>
