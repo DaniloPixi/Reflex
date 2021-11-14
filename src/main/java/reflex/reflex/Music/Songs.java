@@ -18,11 +18,11 @@ public class Songs {
 
     public Songs() {
         player = new MediaPlayer(allSongs[rand3.nextInt(allSongs.length)]);
+
     }
 
     public void playSong() {
         Thread t = new Thread(() -> {
-
             player.play();
         });
         t.start();
