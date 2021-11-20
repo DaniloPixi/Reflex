@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.*;
+import javafx.scene.shape.*;
 import javafx.scene.text.*;
 import javafx.stage.*;
 import reflex.reflex.*;
@@ -32,6 +33,8 @@ public class Stage1 {
     @FXML
     private Text scoreTextField;
     @FXML
+    private Pane visPane = new Pane();
+    @FXML
     private Text reflexTimeField;
     private  List<Bubble> bubbleList = new ArrayList<>();
     private  List<Long> averageReflex = new ArrayList<>();
@@ -42,10 +45,24 @@ public class Stage1 {
     private long averageSum;
     private Long slowest;
     private Long fastest;
-
+    Ellipse[] ellipse = new Ellipse[60];
+    Random rand = new Random();
     @FXML
     private void initialize() {
-
+        for(int i=0;i<ellipse.length;i++ ){ //added a array of Ellipses that are getting updated by the song magnitudes  // still a lot to work on it but is a start
+            ellipse[i] = new Ellipse();
+            ellipse[i].setCenterX(50+i*15);
+            ellipse[i].setCenterY(400);
+            ellipse[i].setRadiusX(10);
+            ellipse[i].setRadiusY(20);
+            ellipse[i].setFill(Color.TRANSPARENT);
+            ellipse[i].setStroke(Color.MAGENTA);
+            ellipse[i].setStroke(LinearGradient.valueOf("linear-gradient(from 0.0% 0.0% to 100.0% 0.0%, #1c84ecff 0.0%, #ad0decff 100.0%)"));
+            ellipse[i].setOpacity(0.3);
+        }
+        visPane.toFront();   //and a new Pane for the Ellipses which is sent to back so it does not interfere with the Main GUI Pane (ap)
+        visPane.setVisible(true);
+        visPane.getChildren().addAll(ellipse);
         scoreText.setVisible(false);
         reflexText.setVisible(false);
         for (int i = 0; i <2000; i++) { //adding circles to the scene, 2000 is an arbitrary number
@@ -59,9 +76,20 @@ public class Stage1 {
             }
         });
         addBubbleOnClick();
+        Songs.getPlayer().setAudioSpectrumListener((v, v1, floats, floats1) ->{   //the ASL that is updating 100 times per second, updating the Ellipses to form a visualizer
+            for (int i=0;i<ellipse.length;i++){
+                if(floats[i]>-60){
+               float aa = floats[i]*-1;
+                ellipse[i].setRadiusY(aa*2);
+                ellipse[i].setOpacity(aa*0.009);
+                }else{
+                    ellipse[i].setRadiusY(20);
+                    ellipse[i].setOpacity(0.1);
+                }
+
+            }
+        });
     }
-
-
     private void addBubbleOnClick() {
         scoreText.setVisible(true);
         reflexText.setVisible(true);
@@ -110,10 +138,15 @@ public class Stage1 {
         averageReflex.remove(0);   //the first element of the list that is always inaccurate
         averageSum = sum/ averageReflex.size();
     }
-    private void getSlowestAndFastest(){      //as the name says, calculating the slowest and fastest reflex that will be displayed at the end of the game
-        averageReflex.remove(0);
-        fastest = Collections.min(averageReflex);
-        slowest = Collections.max(averageReflex);
+    private void getSlowestAndFastest(){ //as the name says, calculating the slowest and fastest reflex that will be displayed at the end of the game
+       if(averageReflex.size()>0) {
+           averageReflex.remove(0);
+           fastest = Collections.min(averageReflex);
+           slowest = Collections.max(averageReflex);
+       }else{
+           fastest = Long.valueOf(0);
+           slowest = Long.valueOf(0);
+       }
     }
     private void getResult() throws IOException {
         closeScene(); //closing the game scene

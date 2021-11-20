@@ -15,15 +15,15 @@ public class Songs {
     public static final Media[] allSongs ={song1,song2,song3} ;
     private static Random rand3 = new Random();
     private static MediaPlayer player;
-
     public Songs() {
         player = new MediaPlayer(allSongs[rand3.nextInt(allSongs.length)]);
-
+        player.setAudioSpectrumInterval(0.009);
+        player.setAudioSpectrumNumBands(128);
     }
 
     public void playSong() {
         Thread t = new Thread(() -> {
-            player.play();
+            player.setOnReady(player::play);
         });
         t.start();
     }

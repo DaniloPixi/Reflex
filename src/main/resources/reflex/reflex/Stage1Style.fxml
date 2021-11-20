@@ -30,6 +30,7 @@
             </input>
          </InnerShadow>
       </effect></Button>
+   <Pane fx:id="visPane" disable="true" prefHeight="803.0" prefWidth="800.0" />
    <Text fx:id="scoreText" fill="#d70db2" fontSmoothingType="LCD" layoutX="219.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score" wrappingWidth="89.98307228088379">
       <font>
          <Font size="36.0" />
